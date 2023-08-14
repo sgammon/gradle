@@ -1,0 +1,161 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /.teamcity
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/compilePluginWithoutConfiguration/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/emptySource/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/emptyTarget/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/enforcerplugin/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/escapeBackslashes/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/escapeDoubleQuotes/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/escapeSingleQuotes/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/expandProperties/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/flatmultimodule/some-thing/webinar-api
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/flatmultimodule/some-thing/webinar-impl
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/flatmultimodule/some-thing/webinar-parent
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/flatmultimodule/some-thing/webinar-war
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/insecureProtocolAllow/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/insecureProtocolDefaultHandling/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/insecureProtocolFail/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/insecureProtocolUpgrade/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/insecureProtocolWarn/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/javadocJar/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/mavenExtensions/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/multiModule/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/multiModuleNoBackReferences/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/multiModuleWithNestedParent/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/multiModuleWithRemoteParent/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/providedNotWar/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/remoteparent/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/singleModule/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/sourcesJar/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/build-init/src/integTest/resources/org/gradle/buildinit/plugins/MavenConversionIntegrationTest/testsJar/some-thing
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/internal-performance-testing/src/templates/root-project
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /subprojects/performance/src/templates/project-with-source
+    schedule:
+      interval: daily

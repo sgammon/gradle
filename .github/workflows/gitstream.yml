@@ -36,8 +36,13 @@ jobs:
     runs-on: ubuntu-latest
     name: gitStream workflow automation
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: Evaluate Rules
-        uses: linear-b/gitstream-github-action@v1
+        uses: linear-b/gitstream-github-action@2358d72ef7a69880b9127f8c4432e486f4863eea # v1
         id: rules-engine
         with:
           full_repository: ${{ github.event.inputs.full_repository }}

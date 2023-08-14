@@ -5,13 +5,21 @@ on:
     tags:
       - 'v*.*.*-RC1'
 
+permissions:
+  contents: read
+
 jobs:
   send-slack-notification:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: Send Slack notification about new RCs for manual testing
         id: slack
-        uses: slackapi/slack-github-action@v1.23.0
+        uses: slackapi/slack-github-action@007b2c3c751a190b6f0f040e47ed024deaa72844 # v1.23.0
         with:
           payload: |
             {
