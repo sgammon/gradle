@@ -14,7 +14,12 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v6
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/stale@5ebf00ea0e4c1561e9b43a292ed34424fb1d4578 # v6.0.1
         with:
           # GLOBAL ------------------------------------------------------------
           operations-per-run: 30
@@ -57,7 +62,12 @@ jobs:
   stale-community-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v6
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/stale@5ebf00ea0e4c1561e9b43a292ed34424fb1d4578 # v6.0.1
         with:
           # GLOBAL ------------------------------------------------------------
           operations-per-run: 30
@@ -94,7 +104,12 @@ jobs:
   close-pending:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v6
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/stale@5ebf00ea0e4c1561e9b43a292ed34424fb1d4578 # v6.0.1
         with:
           # GLOBAL ------------------------------------------------------------
           operations-per-run: 30

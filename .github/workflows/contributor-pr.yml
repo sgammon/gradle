@@ -29,17 +29,22 @@ jobs:
     name: "Compile All"
     runs-on: ubuntu-20.04
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: git clone
-        uses: actions/checkout@v3
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - id: setup-matrix
         run: echo "::set-output name=matrix::$(jq -c -f .github/workflows/extract-unit-test-split.jq .teamcity/subprojects.json)"
       - name: setup java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
         with:
           distribution: temurin
           java-version: 11
       - id: determine-sys-prop-args
-        uses: actions/github-script@v6
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
         with:
           script: |
             if (context.payload.pull_request && context.payload.pull_request.head.repo.fork) {
@@ -49,7 +54,7 @@ jobs:
             }
       - name: assemble
         id: gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2.7.0
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/master' }}
           arguments: |
@@ -57,7 +62,7 @@ jobs:
               --no-configuration-cache
               -DdisableLocalCache=true
               ${{ steps.determine-sys-prop-args.outputs.sys-prop-args }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
           name: build-receipt.properties
           path: subprojects/base-services/build/generated-resources/build-receipt/org/gradle/build-receipt.properties
@@ -70,20 +75,25 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: git clone
-        uses: actions/checkout@v3
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: setup java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
         with:
           distribution: temurin
           java-version: 11
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
         with:
           name: build-receipt.properties
           path: incoming-distributions/build-receipt.properties
       - name: ./gradlew sanityCheck
         id: gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2.7.0
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/master' }}
           arguments: |
@@ -101,20 +111,25 @@ jobs:
         bucket: ${{ fromJson(needs.build.outputs.matrix) }}
       fail-fast: false
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: git clone
-        uses: actions/checkout@v3
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: setup java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
         with:
           distribution: temurin
           java-version: 11
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
         with:
           name: build-receipt.properties
           path: incoming-distributions/build-receipt.properties
       - name: ./gradlew test
         id: gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2.7.0
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/master' }}
           arguments: |
